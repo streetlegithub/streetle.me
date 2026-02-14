@@ -1,8 +1,9 @@
-/* social.css: sequentially animated mono social links list */
+/* social.css: social links list + Spotify now-playing widget */
+
+/* ── Social links section ── */
 .section-social {
   position: relative;
   margin-top: clamp(9rem, 16vh, 14rem);
-  /* clears big brand hero */
   padding: 0 0 calc(clamp(4rem, 12vh, 8rem) + var(--widget-reserve, 0px));
   padding-left: clamp(1.4rem, 3vw, 2.8rem);
 }
@@ -12,16 +13,6 @@
     margin-top: clamp(7rem, 26vh, 10rem);
     padding-left: 1rem;
     padding-bottom: calc(7rem + var(--widget-reserve, 0px));
-    /* space for widgets */
-  }
-
-  .social-links a {
-    font-size: .9rem;
-    gap: .55rem;
-  }
-
-  .social-links {
-    gap: .4rem;
   }
 }
 
@@ -38,6 +29,9 @@
   opacity: 0;
   transform: translateX(-46px);
   filter: blur(4px);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
 }
 
 .social-links a {
@@ -50,9 +44,11 @@
   display: inline-flex;
   align-items: center;
   gap: .65rem;
-  padding: .35rem .2rem .35rem 0;
+  padding: .5rem .6rem .5rem 0;
   text-decoration: none;
   --underline-height: 2px;
+  /* Better touch/click target */
+  min-height: 44px;
 }
 
 .social-links a::after {
@@ -67,54 +63,35 @@
   transition: width .55s var(--ease-spring);
 }
 
-.social-links a.brand-github::after {
-  background: #000000;
-}
-
-/* GitHub black */
-.social-links a.brand-discord::after {
-  background: #5865F2;
-}
-
-.social-links a.brand-youtube::after {
-  background: #FF0000;
-}
-
-.social-links a.brand-twitch::after {
-  background: #9146FF;
-}
-
-.social-links a.brand-spotify::after {
-  background: #1DB954;
-}
-
-.social-links a.brand-x::after {
-  background: #ffffff;
-}
-
-/* X uses monochrome branding */
-.social-links a.brand-steam::after {
-  background: #66C0F4;
-}
-
-.social-links a.brand-reddit::after {
-  background: #FF4500;
-}
-
-.social-links a.brand-roblox::after {
-  background: #385cfc;
-}
-
-.social-links a.brand-xbox::after {
-  background: #107C10;
-}
+/* Brand-specific underline colors */
+.social-links a.brand-github::after { background: #000000; }
+.social-links a.brand-discord::after { background: #5865F2; }
+.social-links a.brand-youtube::after { background: #FF0000; }
+.social-links a.brand-twitch::after { background: #9146FF; }
+.social-links a.brand-spotify::after { background: #1DB954; }
+.social-links a.brand-x::after { background: #ffffff; }
+.social-links a.brand-steam::after { background: #66C0F4; }
+.social-links a.brand-reddit::after { background: #FF4500; }
+.social-links a.brand-roblox::after { background: #385cfc; }
+.social-links a.brand-xbox::after { background: #107C10; }
 
 .social-links a:hover::after,
 .social-links a:focus-visible::after {
   width: 100%;
 }
 
-/* Copy Discord button */
+@media (max-width: 520px) {
+  .social-links a {
+    font-size: .9rem;
+    gap: .55rem;
+  }
+
+  .social-links {
+    gap: .4rem;
+  }
+}
+
+/* ── Copy Discord button ── */
 .copy-discord {
   background: #222a33;
   border: 1px solid #2e3640;
@@ -132,6 +109,9 @@
   line-height: 1;
   position: relative;
   transition: background var(--transition-fast), transform var(--transition-medium), color var(--transition-fast);
+  /* Minimum touch target */
+  min-width: 36px;
+  min-height: 36px;
 }
 
 .copy-discord:hover,
@@ -190,6 +170,7 @@
   }
 }
 
+/* ── Entrance animation ── */
 @keyframes socialLinkIn {
   0% {
     opacity: 0;
@@ -208,46 +189,16 @@
   }
 }
 
-/* Stagger using nth-child delays */
-.social-links li:nth-child(1) {
-  animation: socialLinkIn .85s cubic-bezier(.55, .1, .25, 1.02) .35s forwards;
-}
-
-.social-links li:nth-child(2) {
-  animation: socialLinkIn .85s cubic-bezier(.55, .1, .25, 1.02) .45s forwards;
-}
-
-.social-links li:nth-child(3) {
-  animation: socialLinkIn .85s cubic-bezier(.55, .1, .25, 1.02) .55s forwards;
-}
-
-.social-links li:nth-child(4) {
-  animation: socialLinkIn .85s cubic-bezier(.55, .1, .25, 1.02) .65s forwards;
-}
-
-.social-links li:nth-child(5) {
-  animation: socialLinkIn .85s cubic-bezier(.55, .1, .25, 1.02) .75s forwards;
-}
-
-.social-links li:nth-child(6) {
-  animation: socialLinkIn .85s cubic-bezier(.55, .1, .25, 1.02) .85s forwards;
-}
-
-.social-links li:nth-child(7) {
-  animation: socialLinkIn .85s cubic-bezier(.55, .1, .25, 1.02) .95s forwards;
-}
-
-.social-links li:nth-child(8) {
-  animation: socialLinkIn .85s cubic-bezier(.55, .1, .25, 1.02) 1.05s forwards;
-}
-
-.social-links li:nth-child(9) {
-  animation: socialLinkIn .85s cubic-bezier(.55, .1, .25, 1.02) 1.15s forwards;
-}
-
-.social-links li:nth-child(10) {
-  animation: socialLinkIn .85s cubic-bezier(.55, .1, .25, 1.02) 1.25s forwards;
-}
+.social-links li:nth-child(1)  { animation: socialLinkIn .85s cubic-bezier(.55, .1, .25, 1.02) .35s forwards; }
+.social-links li:nth-child(2)  { animation: socialLinkIn .85s cubic-bezier(.55, .1, .25, 1.02) .45s forwards; }
+.social-links li:nth-child(3)  { animation: socialLinkIn .85s cubic-bezier(.55, .1, .25, 1.02) .55s forwards; }
+.social-links li:nth-child(4)  { animation: socialLinkIn .85s cubic-bezier(.55, .1, .25, 1.02) .65s forwards; }
+.social-links li:nth-child(5)  { animation: socialLinkIn .85s cubic-bezier(.55, .1, .25, 1.02) .75s forwards; }
+.social-links li:nth-child(6)  { animation: socialLinkIn .85s cubic-bezier(.55, .1, .25, 1.02) .85s forwards; }
+.social-links li:nth-child(7)  { animation: socialLinkIn .85s cubic-bezier(.55, .1, .25, 1.02) .95s forwards; }
+.social-links li:nth-child(8)  { animation: socialLinkIn .85s cubic-bezier(.55, .1, .25, 1.02) 1.05s forwards; }
+.social-links li:nth-child(9)  { animation: socialLinkIn .85s cubic-bezier(.55, .1, .25, 1.02) 1.15s forwards; }
+.social-links li:nth-child(10) { animation: socialLinkIn .85s cubic-bezier(.55, .1, .25, 1.02) 1.25s forwards; }
 
 @media (prefers-reduced-motion: reduce) {
   .social-links li {
@@ -262,12 +213,11 @@
   }
 }
 
-/* Now Playing Spotify widget */
+/* ── Now Playing (Spotify) widget ── */
 .now-playing {
   position: fixed;
   right: clamp(1.4rem, 3vw, 2.6rem);
   bottom: clamp(1.2rem, 3vh, 2rem);
-  /* base bottom position */
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -286,6 +236,7 @@
   animation: npEnter .9s cubic-bezier(.55, .1, .25, 1.02) 1.2s forwards;
   overflow: hidden;
   isolation: isolate;
+  z-index: 40;
   --np-bg: none;
 }
 
@@ -303,7 +254,6 @@
   transform: scale(1.15);
   transition: background-image .7s ease, opacity 1.6s cubic-bezier(.4, .0, .2, 1);
   opacity: 0;
-  /* fade in once image ready */
 }
 
 .now-playing::after {
@@ -316,7 +266,7 @@
   opacity: 1;
 }
 
-.now-playing>* {
+.now-playing > * {
   position: relative;
   z-index: 1;
 }
@@ -390,9 +340,7 @@
 }
 
 @keyframes pulseDot {
-
-  0%,
-  100% {
+  0%, 100% {
     transform: scale(.9);
     opacity: .85;
   }
@@ -460,6 +408,12 @@
   cursor: pointer;
   box-shadow: 0 2px 6px -2px rgba(0, 0, 0, .6);
   transition: background var(--transition-fast), transform var(--transition-medium);
+  /* Ensure full clickable area */
+  min-height: 32px;
+  min-width: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .now-playing__open:hover,
@@ -472,15 +426,8 @@
   transform: translateY(0);
 }
 
-@media (max-width:600px) {
-  .now-playing {
-    right: 1rem;
-    left: 1rem;
-    bottom: 1rem;
-    width: auto;
-    max-width: none;
-  }
-
+/* ── Now Playing mobile ── */
+@media (max-width: 600px) {
   .now-playing {
     right: 1rem;
     left: 1rem;
@@ -493,8 +440,6 @@
     font-size: .85rem;
   }
 }
-
-/* Steam widget will position itself above using dynamic offset; no adjustment needed here */
 
 @media (prefers-reduced-motion: reduce) {
   .now-playing {

@@ -1,4 +1,6 @@
-/* header.css repurposed: large top-left brand hero */
+/* layout.css: brand hero, navigation, back arrow, content cards, setup grid */
+
+/* ── Brand hero (large top-left fixed wordmark) ── */
 .brand-hero {
   position: fixed;
   top: clamp(1.2rem, 3vh, 2.4rem);
@@ -16,12 +18,17 @@
   filter: drop-shadow(0 10px 30px rgba(0, 0, 0, .55));
   white-space: nowrap;
   pointer-events: none;
-  /* purely decorative label */
   user-select: none;
+  z-index: 20;
   --slide-distance: 140px;
   transform: translateX(calc(-1 * var(--slide-distance)));
   opacity: 0;
   animation: heroSlideIn 1.15s cubic-bezier(.55, .1, .25, 1.02) .15s forwards;
+}
+
+/* On sub-pages with a back arrow, shift hero right to make room */
+body.has-back .brand-hero {
+  left: calc(clamp(1.4rem, 3vw, 2.8rem) + 46px);
 }
 
 @media (max-width: 520px) {
@@ -31,9 +38,13 @@
     left: 1rem;
     top: 1rem;
     white-space: normal;
-    /* allow wrap if needed */
     max-width: 90%;
     --slide-distance: 90px;
+  }
+
+  body.has-back .brand-hero {
+    left: calc(1rem + 42px);
+    max-width: calc(90% - 42px);
   }
 }
 
@@ -55,7 +66,6 @@
   }
 }
 
-/* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   .brand-hero {
     animation: none;
@@ -65,12 +75,11 @@
   }
 }
 
-/* Mobile-only note under hero */
+/* ── Mobile-only note under hero ── */
 .mobile-note {
   position: fixed;
   left: 1rem;
   top: calc(1rem + 3.2rem);
-  /* default, will be refined by JS to sit under hero */
   font-family: var(--font-sans);
   font-size: .9rem;
   letter-spacing: normal;
@@ -114,13 +123,12 @@
   }
 }
 
-/* Hamburger menu button (top-right under local time) */
+/* ── Hamburger menu button ── */
 .menu-toggle {
   position: fixed;
-  top: clamp(.8rem, 2vh, 1.2rem);
+  top: calc(clamp(.8rem, 2vh, 1.2rem) + 38px);
   right: clamp(1rem, 2.4vw, 2rem);
-  transform: translateY(40px);
-  background: transparent;
+  background: rgba(31, 36, 44, .6);
   border: 1px solid var(--color-border);
   color: var(--color-text-dim);
   border-radius: 8px;
@@ -131,8 +139,11 @@
   cursor: pointer;
   backdrop-filter: blur(10px) saturate(140%);
   -webkit-backdrop-filter: blur(10px) saturate(140%);
-  background: rgba(31, 36, 44, .6);
   box-shadow: var(--shadow-sm);
+  z-index: 55;
+  /* Minimum touch target for mobile */
+  min-width: 44px;
+  min-height: 44px;
 }
 
 .menu-toggle:hover,
@@ -141,9 +152,9 @@
   background: rgba(45, 57, 69, .7);
 }
 
+/* ── Dropdown menu ── */
 .site-menu {
   position: fixed;
-  /* sensible defaults if JS doesn't position it */
   top: clamp(.8rem, 2vh, 1.2rem);
   right: clamp(1rem, 2.4vw, 2rem);
   min-width: 180px;
@@ -158,7 +169,7 @@
   pointer-events: none;
   transform: translateY(-6px);
   transition: opacity var(--transition-medium), transform var(--transition-medium);
-  z-index: 60; /* ensure it's above other fixed UI */
+  z-index: 60;
 }
 
 .site-menu.open {
@@ -173,6 +184,10 @@
   padding: 0;
 }
 
+.site-menu__list li {
+  margin: 0;
+}
+
 .site-menu__list a {
   display: block;
   padding: .6rem .7rem;
@@ -181,6 +196,10 @@
   font-size: .8rem;
   letter-spacing: .08em;
   width: 100%;
+  /* Ensure full clickable area */
+  min-height: 44px;
+  display: flex;
+  align-items: center;
 }
 
 .site-menu__list a:hover,
@@ -188,13 +207,13 @@
   background: #2d3945;
 }
 
-/* Back arrow link (content pages) */
+/* ── Back arrow link (sub-pages) ── */
 .back-arrow {
   position: fixed;
-  top: clamp(1rem, 2vh, 1.2rem);
-  left: clamp(1rem, 2.4vw, 1.2rem);
-  width: 34px;
-  height: 34px;
+  top: clamp(1.2rem, 3vh, 2.4rem);
+  left: clamp(1rem, 2.4vw, 1.4rem);
+  width: 38px;
+  height: 38px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -206,6 +225,12 @@
   -webkit-backdrop-filter: blur(10px) saturate(140%);
   box-shadow: var(--shadow-sm);
   text-decoration: none;
+  font-size: 1.1rem;
+  z-index: 25;
+  /* Minimum touch target */
+  min-width: 44px;
+  min-height: 44px;
+  transition: background var(--transition-fast), color var(--transition-fast);
 }
 
 .back-arrow:hover,
@@ -214,7 +239,14 @@
   background: rgba(45, 57, 69, .7);
 }
 
-/* Content card used by standalone pages like Setup/Guestbook */
+@media (max-width: 520px) {
+  .back-arrow {
+    top: 1rem;
+    left: 1rem;
+  }
+}
+
+/* ── Content card (Setup, Guestbook pages) ── */
 .content-card {
   max-width: 880px;
   margin: clamp(6rem, 12vh, 8rem) auto 3rem;
@@ -239,6 +271,7 @@
   font-size: .95rem;
 }
 
+/* ── Setup grid ── */
 .setup-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -260,14 +293,18 @@
   letter-spacing: .06em;
 }
 
-@media (max-width:520px) {
+@media (max-width: 520px) {
   .content-card {
-    margin: clamp(3rem, 10vh, 4rem) 1rem 2rem;
+    margin: clamp(5rem, 10vh, 6rem) 1rem 2rem;
     padding: .9rem;
+  }
+
+  .setup-grid {
+    grid-template-columns: 1fr;
   }
 }
 
-/* Links used inside the setup grid */
+/* ── Setup links ── */
 .setup-link {
   color: var(--color-text);
   text-decoration: underline dotted rgba(255, 255, 255, 0.06);
@@ -301,6 +338,10 @@
   padding: .5rem .65rem;
   border-radius: 8px;
   transition: transform .09s ease, background .12s ease;
+  /* Minimum touch target */
+  min-height: 44px;
+  display: flex;
+  align-items: center;
 }
 
 .setup-list a:hover,

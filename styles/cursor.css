@@ -1,4 +1,4 @@
-/* cursor.css: custom modern cursor (dot + ring) */
+/* cursor.css: custom cursor (ring only, minimal smoothing) */
 @media (pointer: fine) {
 
   html,
@@ -6,15 +6,22 @@
     cursor: none;
   }
 
-  /* Force-hide default cursor even on elements that set their own (buttons, links, custom components) */
-  body *,
-  body *::before,
-  body *::after {
+  /* Hide default cursor on interactive elements too */
+  a,
+  button,
+  [role="button"],
+  label,
+  select,
+  summary {
     cursor: none !important;
   }
 
-  /* Allow text inputs / textareas to keep I‑beam if added later (optional – comment out if you want hidden too) */
+  /* Preserve text cursor for inputs */
   input[type="text"],
+  input[type="search"],
+  input[type="email"],
+  input[type="url"],
+  input[type="password"],
   textarea {
     cursor: text !important;
   }
@@ -29,27 +36,12 @@
     z-index: 9999;
   }
 
-  .cursor-dot,
   .cursor-ring {
     position: absolute;
     top: 0;
     left: 0;
     pointer-events: none;
-    transform: translate(-50%, -50%);
-    will-change: transform, opacity, width, height;
-  }
-
-  .cursor-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, #ffffff, #cfd3d9);
-    mix-blend-mode: difference;
-    transition: transform .18s cubic-bezier(.4, .13, .23, .96), opacity .25s;
-    display: none;
-  }
-
-  .cursor-ring {
+    will-change: transform;
     width: 26px;
     height: 26px;
     border: 2px solid rgba(255, 255, 255, .55);
@@ -57,10 +49,9 @@
     backdrop-filter: blur(6px) brightness(1.15);
     -webkit-backdrop-filter: blur(6px) brightness(1.15);
     box-shadow: 0 0 0 1px rgba(255, 255, 255, .06), 0 0 14px -4px rgba(255, 255, 255, .45);
-    transition: border-color .18s, width .18s, height .18s, opacity .22s, transform .18s cubic-bezier(.22, .61, .36, 1);
+    transition: border-color .18s, width .18s, height .18s, opacity .22s;
   }
 
-  .cursor-hidden .cursor-dot,
   .cursor-hidden .cursor-ring {
     opacity: 0;
   }
@@ -72,28 +63,19 @@
     box-shadow: 0 0 0 1px rgba(99, 102, 241, .35), 0 0 24px -6px rgba(99, 102, 241, .65);
   }
 
-  .cursor-down .cursor-dot {
-    transform: translate(-50%, -50%) scale(.4);
-  }
-
   .cursor-down .cursor-ring {
-    transform: translate(-50%, -50%) scale(.8);
-  }
-
-  .cursor-smooth {
-    transition: none;
+    width: 22px;
+    height: 22px;
   }
 
   @media (prefers-reduced-motion: reduce) {
-
-    .cursor-dot,
     .cursor-ring {
       transition: none;
     }
   }
 }
 
-/* Touch / coarse pointer: no custom cursor (fallback to default) */
+/* Touch / coarse pointer: no custom cursor */
 @media (pointer: coarse) {
   .cursor-layer {
     display: none !important;
