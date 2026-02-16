@@ -112,6 +112,15 @@ a {
   }
 }
 
+/* Respect reduced-motion user preference */
+@media (prefers-reduced-motion: reduce) {
+  .fade-slide-in {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* Layer system — z-index hierarchy */
 /* brand-hero: z-index 20 (always above scrolling content) */
 /* back-arrow: z-index 25 */
