@@ -452,3 +452,8 @@
     animation: none;
   }
 }
+
+.social-links a.brand-sponsors::after { background: #7248FF; }
+
+/* ensure sponsor heart icon is white */
+.social-links a.brand-sponsors svg { fill: #fff; }
