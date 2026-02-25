@@ -73,7 +73,6 @@
 .social-links a.brand-steam::after { background: #66C0F4; }
 .social-links a.brand-reddit::after { background: #FF4500; }
 .social-links a.brand-roblox::after { background: #385cfc; }
-.social-links a.brand-xbox::after { background: #107C10; }
 
 .social-links a:hover::after,
 .social-links a:focus-visible::after {
