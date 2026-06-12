@@ -431,13 +431,28 @@ function initUkTime() {
   const el = document.getElementById('ukTime');
   if (!el) return;
   const tz = 'Europe/London';
-  const fmt = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: tz });
+  let fmt;
+  try {
+    fmt = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: tz });
+  } catch (e) {
+    console.warn('initUkTime: Intl timeZone unsupported, falling back to local time', e);
+    fmt = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false });
+  }
   let last = '';
   function tick() {
-    const now = fmt.format(new Date());
-    if (now !== last) {
-      el.textContent = `It is currently ${now} for me`;
-      last = now;
+    try {
+      const now = fmt.format(new Date());
+      if (now !== last) {
+        el.textContent = `It is currently ${now} for me`;
+        last = now;
+      }
+    } catch (e) {
+      const now = new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false });
+      if (now !== last) {
+        el.textContent = `It is currently ${now} for me`;
+        last = now;
+      }
+      console.warn('initUkTime: failed to format time, used fallback toLocaleTimeString', e);
     }
     const ms = Date.now();
     const delay = 60000 - (ms % 60000) + 50;
