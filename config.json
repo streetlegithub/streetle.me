@@ -1,18 +1,53 @@
 {
   "groups": [
     {
-      "id": "group-id",
+      "id": "grp-resolution",
       "name": "Resolution",
       "color": "#FFBE01",
+      "borderColor": "#FF858283",
+      "isExpanded": true
+    },
+    {
+      "id": "grp-streaming",
+      "name": "Streaming Service",
+      "color": "#FF2196F3",
+      "borderColor": "#FF858283",
+      "isExpanded": true
+    },
+    {
+      "id": "grp-channels",
+      "name": "Channels",
+      "color": "#FF9C27B0",
+      "borderColor": "#FF858283",
+      "isExpanded": true
+    },
+    {
+      "id": "grp-audio",
+      "name": "Audio",
+      "color": "#FF4CAF50",
+      "borderColor": "#FF858283",
+      "isExpanded": true
+    },
+    {
+      "id": "grp-visual",
+      "name": "Visual",
+      "color": "#FFFF9800",
+      "borderColor": "#FF858283",
+      "isExpanded": true
+    },
+    {
+      "id": "grp-source",
+      "name": "Source",
+      "color": "#FF607D8B",
       "borderColor": "#FF858283",
       "isExpanded": true
     }
   ],
   "filters": [
     {
-      "id": "group-id-5-1-channels",
+      "id": "channels-5-1",
       "name": "5.1 channels",
-      "groupId": "group-id",
+      "groupId": "grp-channels",
       "isEnabled": true,
       "pattern": "(?i)^(?=.*(?:^|[^0-9])5[. ][01](?![0-9]))(?!.*(?:^|[^0-9])[7-8][. ][01](?![0-9]))",
       "imageURL": "",
@@ -23,9 +58,9 @@
       "type": "filter"
     },
     {
-      "id": "group-id-7-1-channels",
+      "id": "channels-7-1",
       "name": "7.1 channels",
-      "groupId": "group-id",
+      "groupId": "grp-channels",
       "isEnabled": true,
       "pattern": "(?i)(?:^|[^0-9])[7-8][. ][01](?![0-9])",
       "imageURL": "",
@@ -36,9 +71,9 @@
       "type": "filter"
     },
     {
-      "id": "group-id-crunchyroll",
+      "id": "streaming-crunchyroll",
       "name": "Crunchyroll",
-      "groupId": "group-id",
+      "groupId": "grp-streaming",
       "isEnabled": true,
       "pattern": "(?i)\\b(?:crunchyroll|crunch)\\b",
       "imageURL": "",
@@ -49,9 +84,9 @@
       "type": "filter"
     },
     {
-      "id": "group-id-paramount-2",
+      "id": "streaming-paramount-plus",
       "name": "Paramount+",
-      "groupId": "group-id",
+      "groupId": "grp-streaming",
       "isEnabled": true,
       "pattern": "(?i)\\b(?:pmtp|pamp|paramount\\+?|paramount[\\s._-]?plus)\\b",
       "imageURL": "",
@@ -62,22 +97,9 @@
       "type": "filter"
     },
     {
-      "id": "group-id-paramount",
-      "name": "Paramount+",
-      "groupId": "group-id",
-      "isEnabled": true,
-      "pattern": "(?i)\\b(?:pmtp|pamp|paramount\\+?|paramount[\\s._-]?plus)\\b",
-      "imageURL": "",
-      "tagColor": "#151515",
-      "borderColor": "#ffffff",
-      "textColor": "#FFFFFF",
-      "tagStyle": "filled",
-      "type": "filter"
-    },
-    {
-      "id": "group-id-peacock",
+      "id": "streaming-peacock",
       "name": "Peacock",
-      "groupId": "group-id",
+      "groupId": "grp-streaming",
       "isEnabled": true,
       "pattern": "(?i)\\b(?:pcok|peacock)\\b",
       "imageURL": "",
@@ -88,9 +110,9 @@
       "type": "filter"
     },
     {
-      "id": "group-id-hulu",
+      "id": "streaming-hulu",
       "name": "Hulu",
-      "groupId": "group-id",
+      "groupId": "grp-streaming",
       "isEnabled": true,
       "pattern": "(?i)\\bhulu\\b",
       "imageURL": "",
@@ -101,9 +123,9 @@
       "type": "filter"
     },
     {
-      "id": "group-id-hbo-max-max",
+      "id": "streaming-hbo-max",
       "name": "HBO Max",
-      "groupId": "group-id",
+      "groupId": "grp-streaming",
       "isEnabled": true,
       "pattern": "(?i)(?:\\b(?:hmax|hbomax|hbo[\\s._-]?max)\\b|(?:^|[\\s._-])max(?:[\\s._-]|$))",
       "imageURL": "",
@@ -114,9 +136,9 @@
       "type": "filter"
     },
     {
-      "id": "group-id-disney",
+      "id": "streaming-disney",
       "name": "Disney+",
-      "groupId": "group-id",
+      "groupId": "grp-streaming",
       "isEnabled": true,
       "pattern": "(?i)\\b(?:dsnp|dsny|disney\\+?|disney[\\s._-]?plus)\\b",
       "imageURL": "",
@@ -127,9 +149,9 @@
       "type": "filter"
     },
     {
-      "id": "group-id-apple-tv",
+      "id": "streaming-apple-tv",
       "name": "Apple TV+",
-      "groupId": "group-id",
+      "groupId": "grp-streaming",
       "isEnabled": true,
       "pattern": "(?i)\\b(?:atvp|apple[\\s._-]?tv\\+?|appletv)\\b",
       "imageURL": "",
@@ -140,9 +162,9 @@
       "type": "filter"
     },
     {
-      "id": "group-id-prime-video",
+      "id": "streaming-prime-video",
       "name": "Prime Video",
-      "groupId": "group-id",
+      "groupId": "grp-streaming",
       "isEnabled": true,
       "pattern": "(?i)\\b(?:amzn|amazon|prime[\\s._-]?video)\\b",
       "imageURL": "",
@@ -153,9 +175,9 @@
       "type": "filter"
     },
     {
-      "id": "group-id-netflix",
+      "id": "streaming-netflix",
       "name": "Netflix",
-      "groupId": "group-id",
+      "groupId": "grp-streaming",
       "isEnabled": true,
       "pattern": "(?i)\\b(?:nflx|netflix)\\b",
       "imageURL": "",
@@ -166,9 +188,9 @@
       "type": "filter"
     },
     {
-      "id": "group-id-dd-2",
+      "id": "audio-dd",
       "name": "DD",
-      "groupId": "group-id",
+      "groupId": "grp-audio",
       "isEnabled": true,
       "pattern": "(?i)^(?=.*\\b(?:dd[25][. ][01]|ac-?3)\\b)(?!.*\\b(?:ddp|dd\\+|eac-?3|e-?ac-?3)\\b)(?!.*\\batmos\\b)(?!.*\\btrue[\\s._-]?hd\\b)",
       "imageURL": "",
@@ -179,9 +201,9 @@
       "type": "filter"
     },
     {
-      "id": "group-id-dd",
+      "id": "audio-dd-plus",
       "name": "DD+",
-      "groupId": "group-id",
+      "groupId": "grp-audio",
       "isEnabled": true,
       "pattern": "(?i)^(?=.*\\b(?:ddp|dd\\+|eac-?3|e-?ac-?3)\\b)(?!.*\\btrue[\\s._-]?hd\\b)",
       "imageURL": "",
@@ -192,9 +214,9 @@
       "type": "filter"
     },
     {
-      "id": "group-id-dts",
+      "id": "audio-dts",
       "name": "DTS",
-      "groupId": "group-id",
+      "groupId": "grp-audio",
       "isEnabled": true,
       "pattern": "(?i)^(?=.*\\bdts\\b)(?!.*\\bdts[-_. ]?(?:hd|ma|xll|x)\\b)",
       "imageURL": "",
@@ -205,9 +227,9 @@
       "type": "filter"
     },
     {
-      "id": "group-id-dts-hd",
+      "id": "audio-dts-hd",
       "name": "DTS-HD",
-      "groupId": "group-id",
+      "groupId": "grp-audio",
       "isEnabled": true,
       "pattern": "(?i)^(?=.*\\bdts[-_. ]?hd\\b)(?!.*\\bdts[-_. ]?(?:hd[-_. ]?)?ma\\b)(?!.*\\bdts[-_.: ]?x\\b)",
       "imageURL": "",
@@ -218,9 +240,9 @@
       "type": "filter"
     },
     {
-      "id": "group-id-dts-hd-ma",
+      "id": "audio-dts-hd-ma",
       "name": "DTS-HD MA",
-      "groupId": "group-id",
+      "groupId": "grp-audio",
       "isEnabled": true,
       "pattern": "(?i)^(?=.*\\bdts[-_. ]?(?:hd[-_. ]?)?ma\\b)(?!.*\\bdts[-_.: ]?x\\b)",
       "imageURL": "",
@@ -231,9 +253,9 @@
       "type": "filter"
     },
     {
-      "id": "group-id-dts-x",
+      "id": "audio-dts-x",
       "name": "DTS:X",
-      "groupId": "group-id",
+      "groupId": "grp-audio",
       "isEnabled": true,
       "pattern": "(?i)\\bdts[-_.: ]?x\\b",
       "imageURL": "",
@@ -244,9 +266,9 @@
       "type": "filter"
     },
     {
-      "id": "group-id-truehd",
+      "id": "audio-truehd",
       "name": "TrueHD",
-      "groupId": "group-id",
+      "groupId": "grp-audio",
       "isEnabled": true,
       "pattern": "(?i)\\btrue[\\s._-]?hd\\b",
       "imageURL": "",
@@ -257,9 +279,9 @@
       "type": "filter"
     },
     {
-      "id": "group-id-atmos",
+      "id": "audio-atmos",
       "name": "Atmos",
-      "groupId": "group-id",
+      "groupId": "grp-audio",
       "isEnabled": true,
       "pattern": "(?i)\\batmos\\b",
       "imageURL": "",
@@ -270,9 +292,9 @@
       "type": "filter"
     },
     {
-      "id": "group-id-imax-2",
+      "id": "visual-imax",
       "name": "IMAX",
-      "groupId": "group-id",
+      "groupId": "grp-visual",
       "isEnabled": true,
       "pattern": "(?i)^(?=.*\\bimax\\b)(?!.*\\benhanced\\b)",
       "imageURL": "",
@@ -283,9 +305,9 @@
       "type": "filter"
     },
     {
-      "id": "group-id-imax",
-      "name": "IMAX",
-      "groupId": "group-id",
+      "id": "visual-imax-enhanced",
+      "name": "IMAX Enhanced",
+      "groupId": "grp-visual",
       "isEnabled": true,
       "pattern": "(?i)\\bimax[\\s._-]?enhanced\\b",
       "imageURL": "",
@@ -296,9 +318,9 @@
       "type": "filter"
     },
     {
-      "id": "group-id-hdr",
+      "id": "visual-hdr",
       "name": "HDR",
-      "groupId": "group-id",
+      "groupId": "grp-visual",
       "isEnabled": true,
       "pattern": "(?i)^(?!.*\\b(?:dv|dovi|dolby[\\s._-]?vision)\\b)(?=.*\\bhdr\\b)(?!.*\\bhdr[\\s._-]?10)",
       "imageURL": "",
@@ -309,9 +331,9 @@
       "type": "filter"
     },
     {
-      "id": "group-id-hdr10-2",
+      "id": "visual-hdr10",
       "name": "HDR10",
-      "groupId": "group-id",
+      "groupId": "grp-visual",
       "isEnabled": true,
       "pattern": "(?i)^(?!.*\\b(?:dv|dovi|dolby[\\s._-]?vision)\\b)(?=.*\\bhdr[\\s._-]?10\\b)(?!.*\\bhdr[\\s._-]?10[\\s._-]?(?:\\+|plus|p)(?:\\b|[^a-z0-9]))",
       "imageURL": "",
@@ -322,9 +344,9 @@
       "type": "filter"
     },
     {
-      "id": "group-id-hdr10",
+      "id": "visual-hdr10-plus",
       "name": "HDR10+",
-      "groupId": "group-id",
+      "groupId": "grp-visual",
       "isEnabled": true,
       "pattern": "(?i)^(?!.*\\b(?:dv|dovi|dolby[\\s._-]?vision)\\b)(?=.*\\bhdr[\\s._-]?10[\\s._-]?(?:\\+|plus|p)(?:\\b|[^a-z0-9]))",
       "imageURL": "",
@@ -335,9 +357,9 @@
       "type": "filter"
     },
     {
-      "id": "group-id-dolby-vision",
+      "id": "visual-dolby-vision",
       "name": "Dolby Vision",
-      "groupId": "group-id",
+      "groupId": "grp-visual",
       "isEnabled": true,
       "pattern": "(?i)\\b(?:dv|dovi|dolby[\\s._-]?vision)\\b",
       "imageURL": "",
@@ -348,9 +370,9 @@
       "type": "filter"
     },
     {
-      "id": "group-id-remux",
-      "name": "Blu-Ray",
-      "groupId": "group-id",
+      "id": "source-remux",
+      "name": "Remux",
+      "groupId": "grp-source",
       "isEnabled": true,
       "pattern": "(?i)\\bremux\\b",
       "imageURL": "",
@@ -361,9 +383,9 @@
       "type": "filter"
     },
     {
-      "id": "group-id-sd",
+      "id": "resolution-sd",
       "name": "SD",
-      "groupId": "group-id",
+      "groupId": "grp-resolution",
       "isEnabled": true,
       "pattern": "(?i)\\b480[pi]?\\b",
       "imageURL": "",
@@ -374,9 +396,9 @@
       "type": "filter"
     },
     {
-      "id": "group-id-hd",
+      "id": "resolution-hd",
       "name": "HD",
-      "groupId": "group-id",
+      "groupId": "grp-resolution",
       "isEnabled": true,
       "pattern": "(?i)\\b720[pi]?\\b",
       "imageURL": "",
@@ -387,9 +409,9 @@
       "type": "filter"
     },
     {
-      "id": "group-id-4k",
+      "id": "resolution-4k",
       "name": "4K",
-      "groupId": "group-id",
+      "groupId": "grp-resolution",
       "isEnabled": true,
       "pattern": "(?i)^(?=.*(?:\\b2160[pi]?\\b|\\b4k\\b|\\buhd\\b))(?!.*(?:\\b1080[pi]?\\b|\\b720[pi]?\\b))",
       "imageURL": "",
@@ -400,9 +422,9 @@
       "type": "filter"
     },
     {
-      "id": "group-id-1080p",
+      "id": "resolution-1080p",
       "name": "FHD",
-      "groupId": "group-id",
+      "groupId": "grp-resolution",
       "isEnabled": true,
       "pattern": "(?i)\\b1080[pi]?\\b",
       "imageURL": "",
